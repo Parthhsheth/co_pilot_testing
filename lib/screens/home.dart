@@ -5,7 +5,6 @@ import 'dart:convert';
 import 'package:co_pilot_testing/widgets/videos.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:scroll_app_bar/scroll_app_bar.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -49,14 +48,11 @@ class _HomeState extends State<Home> {
     });
   }
 
-  final controller = ScrollController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(context),
       body: ListView.builder(
-          controller: controller,
           itemCount: videos.length,
           itemBuilder: (context, i) {
             return Video(
@@ -66,9 +62,8 @@ class _HomeState extends State<Home> {
     );
   }
 
-  PreferredSizeWidget appBar(BuildContext context) {
-    return ScrollAppBar(
-      controller: controller,
+  AppBar appBar(BuildContext context) {
+    return AppBar(
       elevation: 2,
       title: Image.network(
         'https://github.com/codingislove01/flutter-youtube-ui/blob/main/assets/images/logo.png?raw=true',
